@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "1027119627215",
-    "project_id": "makan-sehat",
-    "storage_bucket": "makan-sehat.appspot.com"
+    "project_number": "913469722738",
+    "firebase_url": "https://makan-sehat-6dd48-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "makan-sehat-6dd48",
+    "storage_bucket": "makan-sehat-6dd48.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1027119627215:android:01de90e9485283704230ba",
+        "mobilesdk_app_id": "1:913469722738:android:a08d184e803d03779eb2eb",
         "android_client_info": {
           "package_name": "com.upiyptk.makansehat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1027119627215-f8mvducqoo2k9uuivqvaca713662qckl.apps.googleusercontent.com",
+          "client_id": "913469722738-kaqp40e47d4bten5hsdb886dd2jl7n7p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBXEsEaKfDSQ_ASfPZxghZ4nIQ0V7IU7Jg"
+          "current_key": "AIzaSyDTsdHZdQc8Dak5E1BNXo7RjqI21rmUid4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1027119627215-f8mvducqoo2k9uuivqvaca713662qckl.apps.googleusercontent.com",
+              "client_id": "913469722738-kaqp40e47d4bten5hsdb886dd2jl7n7p.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

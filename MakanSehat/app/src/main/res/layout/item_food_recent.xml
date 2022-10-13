@@ -2,7 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="100dp"
+    android:layout_marginBottom="10dp"
     android:backgroundTint="@color/yellow"
     app:cardCornerRadius="30dp">
     <LinearLayout
@@ -11,8 +12,9 @@
         android:orientation="horizontal"
         android:padding="15dp">
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:id="@+id/iv_foodImage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:contentDescription="@string/food_title"
             android:src="@drawable/food_buah"/>
         <LinearLayout
@@ -22,6 +24,7 @@
             android:gravity="center"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tv_foodTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -42,6 +45,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="@string/food_descriptiont"/>
                 <TextView
+                    android:id="@+id/tv_foodWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/food_weight"/>
@@ -61,6 +65,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="@string/food_descriptiont"/>
                 <TextView
+                    android:id="@+id/tv_foodCarbohidrat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/food_carbohidrat"/>
