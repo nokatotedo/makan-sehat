@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1027119627215",
+    "project_id": "makan-sehat",
+    "storage_bucket": "makan-sehat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027119627215:android:01de90e9485283704230ba",
+        "android_client_info": {
+          "package_name": "com.upiyptk.makansehat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027119627215-f8mvducqoo2k9uuivqvaca713662qckl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXEsEaKfDSQ_ASfPZxghZ4nIQ0V7IU7Jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027119627215-f8mvducqoo2k9uuivqvaca713662qckl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

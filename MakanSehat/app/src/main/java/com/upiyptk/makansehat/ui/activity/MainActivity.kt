@@ -1,7 +1,8 @@
-package com.upiyptk.makansehat
+package com.upiyptk.makansehat.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.upiyptk.makansehat.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

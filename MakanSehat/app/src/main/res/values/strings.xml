@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Makan Sehat</string>
+    <string name="food_recent_text">Recent Food</string>
+    <string name="food_title">Title Food</string>
+    <string name="food_descriptionw">Berat</string>
+    <string name="food_descriptionc">Karbohidrat</string>
+    <string name="food_descriptiont">:</string>
+    <string name="food_weight">Weight Food</string>
+    <string name="food_carbohidrat">Carbohidrat Food</string>
 </resources>
