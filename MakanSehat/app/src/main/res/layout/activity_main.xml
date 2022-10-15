@@ -6,12 +6,48 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     tools:context=".MainActivity">
+    <ProgressBar
+        android:id="@+id/pb_foodRecent_inner"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:indeterminateOnly="false"
+        android:progressDrawable="@drawable/progress_bar_inner"
+        android:progress="0"
+        app:layout_constraintTop_toTopOf="@id/pb_foodRecent_outer"
+        app:layout_constraintBottom_toBottomOf="@id/pb_foodRecent_outer"
+        app:layout_constraintStart_toStartOf="@id/pb_foodRecent_outer"
+        app:layout_constraintEnd_toEndOf="@id/pb_foodRecent_outer"/>
+    <ProgressBar
+        android:id="@+id/pb_foodRecent_outer"
+        android:layout_width="330dp"
+        android:layout_height="250dp"
+        android:indeterminateOnly="false"
+        android:progressDrawable="@drawable/progress_bar_outer"
+        android:progress="0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:id="@+id/tv_foodRecent_carbohidrat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/food_recent_carbohidrat"
+        app:layout_constraintTop_toTopOf="@id/pb_foodRecent_outer"
+        app:layout_constraintBottom_toBottomOf="@id/pb_foodRecent_outer"
+        app:layout_constraintStart_toStartOf="@id/pb_foodRecent_outer"
+        app:layout_constraintEnd_toEndOf="@id/pb_foodRecent_outer"/>
     <TextView
         android:id="@+id/tv_foodRecent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:text="@string/food_recent_text"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/pb_foodRecent_outer"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="350dp"

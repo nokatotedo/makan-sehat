@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Makan Sehat</string>
     <string name="food_recent_text">Recent Food</string>
+    <string name="food_recent_carbohidrat">22 kcal</string>
     <string name="food_title">Title Food</string>
     <string name="food_descriptionw">Berat</string>
     <string name="food_descriptionc">Karbohidrat</string>
