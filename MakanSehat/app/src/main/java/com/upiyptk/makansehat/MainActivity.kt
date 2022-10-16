@@ -5,6 +5,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
@@ -58,5 +59,15 @@ class MainActivity: AppCompatActivity() {
                 Toast.makeText(this@MainActivity,"Error", Toast.LENGTH_LONG).show()
             }
         })
+
+        val swipeDelete = object: FoodDeleteSwipe() {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                array.removeAt(position)
+                rv.adapter?.notifyItemRemoved(position)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeDelete)
+        itemTouchHelper.attachToRecyclerView(rv)
     }
 }
