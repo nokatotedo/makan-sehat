@@ -1,11 +1,11 @@
 package com.upiyptk.makansehat
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
@@ -33,41 +33,42 @@ class MainActivity: AppCompatActivity() {
         carbohidat = findViewById(R.id.tv_foodRecent_carbohidrat)
         progressInner.progress = 0
         progressOuter.progress = 0
-        carbohidat.text = "0 kcal"
+        carbohidat.text = "0.0 kkal"
 
         ref = FirebaseDatabase.getInstance().getReference("makanan")
         ref.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 total = 0.0
                 array.clear()
+
                 if(snapshot.exists()) {
                     for(food in snapshot.children) {
                         val foodValue = food.getValue(FoodData::class.java)
                         total += foodValue?.karbohidrat!!
+
                         array.add(foodValue)
                     }
+
                     percent = (total/2).toInt()
                     progressInner.progress = percent
                     progressOuter.progress = percent
-                    carbohidat.text = total.toString() + " kcal"
+                    carbohidat.text = total.toString() + " kkal"
 
-                    rv.adapter = FoodAdapter(array)
+                    val adapter = FoodAdapter(array)
+                    rv.adapter = adapter
+                    adapter.setOnItemClickCallback(object: FoodAdapter.OnItemClickCallback {
+                        override fun onItemClicked(list: FoodData) {
+                            val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                            intent.putExtra(DetailActivity.EXTRA_TITLE, list.jenis)
+                            startActivity(intent)
+                        }
+                    })
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@MainActivity,"Error", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity, "Error", Toast.LENGTH_LONG).show()
             }
         })
-
-        val swipeDelete = object: FoodDeleteSwipe() {
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                array.removeAt(position)
-                rv.adapter?.notifyItemRemoved(position)
-            }
-        }
-        val itemTouchHelper = ItemTouchHelper(swipeDelete)
-        itemTouchHelper.attachToRecyclerView(rv)
     }
 }

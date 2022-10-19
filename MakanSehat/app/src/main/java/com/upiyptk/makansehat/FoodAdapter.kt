@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 class FoodAdapter(private val list: ArrayList<FoodData>): RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
     inner class FoodViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val foodTitle: TextView = itemView.findViewById(R.id.tv_foodTitle)
         val foodWeight: TextView = itemView.findViewById(R.id.tv_foodWeight)
@@ -42,12 +44,22 @@ class FoodAdapter(private val list: ArrayList<FoodData>): RecyclerView.Adapter<F
         }
 
         holder.foodTitle.text = foodTitle
-        holder.foodWeight.text = foodWeight.toString()
-        holder.foodCarbohidrat.text = foodCarbohidrat.toString()
+        holder.foodWeight.text = foodWeight.toString() + " gram"
+        holder.foodCarbohidrat.text = foodCarbohidrat.toString() + " kkal"
         Glide.with(holder.itemView.context)
             .load(foodImage)
             .into(holder.foodImage)
+
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(list[holder.adapterPosition]) }
     }
 
     override fun getItemCount(): Int = list.size
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(list: FoodData)
+    }
 }
