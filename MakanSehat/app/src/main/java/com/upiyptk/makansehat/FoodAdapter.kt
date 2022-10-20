@@ -34,7 +34,6 @@ class FoodAdapter(private val list: ArrayList<FoodData>): RecyclerView.Adapter<F
             "Daging" -> R.drawable.food_daging
             "Ikan" -> R.drawable.food_ikan
             "Kacang" -> R.drawable.food_kacang
-            "Minuman Olahan" -> R.drawable.food_minuman
             "Sayur" -> R.drawable.food_sayur
             "Serealia" -> R.drawable.food_serealia
             "Susu" -> R.drawable.food_susu

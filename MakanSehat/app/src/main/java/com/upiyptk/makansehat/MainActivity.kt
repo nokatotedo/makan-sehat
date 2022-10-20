@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class MainActivity: AppCompatActivity() {
     private lateinit var ref: DatabaseReference
@@ -49,10 +51,13 @@ class MainActivity: AppCompatActivity() {
                         array.add(foodValue)
                     }
 
+                    val df = DecimalFormat("#.##")
+                    df.roundingMode = RoundingMode.CEILING
+
                     percent = (total/2).toInt()
                     progressInner.progress = percent
                     progressOuter.progress = percent
-                    carbohidat.text = "$total kkal"
+                    carbohidat.text = "${df.format(total)} kkal"
 
                     val adapter = FoodAdapter(array)
                     rv.adapter = adapter

@@ -63,12 +63,12 @@ class DetailActivity: AppCompatActivity() {
             "Kacang" -> {
                 position = 2
                 m = "m3"
-                image = R.drawable.image_serealia
+                image = R.drawable.image_kacang
             }
             "Sayur" -> {
                 position = 3
                 m = "m4"
-                image = R.drawable.image_serealia
+                image = R.drawable.image_sayur
             }
             "Buah" -> {
                 position = 4
@@ -78,22 +78,22 @@ class DetailActivity: AppCompatActivity() {
             "Daging" -> {
                 position = 5
                 m = "m6"
-                image = R.drawable.image_serealia
+                image = R.drawable.image_daging
             }
             "Ikan" -> {
                 position = 6
                 m = "m7"
-                image = R.drawable.image_serealia
+                image = R.drawable.image_ikan
             }
             "Telur" -> {
                 position = 7
                 m = "m8"
-                image = R.drawable.image_serealia
+                image = R.drawable.image_telur
             }
             "Susu" -> {
                 position = 8
                 m = "m9"
-                image = R.drawable.image_serealia
+                image = R.drawable.image_susu
             }
             else -> {
                 position = 9
@@ -145,9 +145,18 @@ class DetailActivity: AppCompatActivity() {
         buttonSave = findViewById(R.id.bv_save)
         buttonSave.setOnClickListener {
             ref.child("makanan").child(m).child("berat")
-                .setValue(weight)
+                .setValue(weight).addOnSuccessListener {
+                    Toast.makeText(this@DetailActivity, "Berhasil disimpan", Toast.LENGTH_SHORT).show()
+                } .addOnFailureListener {
+                    Toast.makeText(this@DetailActivity, "Gagal disimpan", Toast.LENGTH_SHORT).show()
+                }
+
             ref.child("makanan").child(m).child("karbohidrat")
-                .setValue(carbohidrat)
+                .setValue(carbohidrat).addOnSuccessListener {
+                    Toast.makeText(this@DetailActivity, "Berhasil disimpan", Toast.LENGTH_SHORT).show()
+                } .addOnFailureListener {
+                    Toast.makeText(this@DetailActivity, "Gagal disimpan", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 
