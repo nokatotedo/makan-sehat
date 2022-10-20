@@ -1,25 +1,32 @@
 package com.upiyptk.makansehat
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class DetailActivity: AppCompatActivity() {
     private lateinit var ref: DatabaseReference
+    private lateinit var buttonMinus: ImageView
+    private lateinit var buttonPlus: ImageView
     private lateinit var foodImage: ImageView
     private lateinit var foodTitle: TextView
     private lateinit var foodDescription: TextView
     private lateinit var foodWeight: TextView
     private lateinit var foodCarbohidrat: TextView
+    private lateinit var buttonSave: Button
     private var weight: Double = 0.0
     private var carbohidrat: Double = 0.0
     private var position: Int = 0
     private var image: Int = 0
     private var m: String = "Error"
+    private var title: String = "Error"
 
     companion object {
         const val EXTRA_TITLE = "extra_title"
@@ -41,7 +48,7 @@ class DetailActivity: AppCompatActivity() {
             "Susu kental manis, UHT coklat cair, UHT vanila cair"
         )
 
-        val title = intent.getStringExtra("extra_title")
+        title = intent.getStringExtra("extra_title")!!
         when(title) {
             "Serealia" -> {
                 position = 0
@@ -108,7 +115,7 @@ class DetailActivity: AppCompatActivity() {
                 val weightString = it.value.toString()
                 weight = weightString.toDouble()
                 foodWeight = findViewById(R.id.tv_foodWeight)
-                foodWeight.text = weight.toString() + " gram"
+                foodWeight.text = "$weight gram"
             } .addOnFailureListener {
                 Toast.makeText(this@DetailActivity, "Error", Toast.LENGTH_LONG).show()
             }
@@ -118,9 +125,54 @@ class DetailActivity: AppCompatActivity() {
                 val carbohidratString = it.value.toString()
                 carbohidrat = carbohidratString.toDouble()
                 foodCarbohidrat = findViewById(R.id.tv_foodCarbohidrat)
-                foodCarbohidrat.text = carbohidrat.toString() + " kkal"
+                foodCarbohidrat.text = "$carbohidrat kkal"
             } .addOnFailureListener {
                 Toast.makeText(this@DetailActivity, "Error", Toast.LENGTH_LONG).show()
             }
+
+        buttonPlus = findViewById(R.id.biv_plus)
+        buttonPlus.setOnClickListener {
+            weight += 0.01
+            total()
+        }
+
+        buttonMinus = findViewById(R.id.biv_minus)
+        buttonMinus.setOnClickListener {
+            weight -= 0.01
+            total()
+        }
+
+        buttonSave = findViewById(R.id.bv_save)
+        buttonSave.setOnClickListener {
+            ref.child("makanan").child(m).child("berat")
+                .setValue(weight)
+            ref.child("makanan").child(m).child("karbohidrat")
+                .setValue(carbohidrat)
+        }
+    }
+
+    private fun total() {
+        val recipe: Double = when(title) {
+            "Serealia" -> weight*(20.2/30.0)
+            "Umbi" -> weight*(11.7/19.5)
+            "Kacang" -> weight*(2.0/27.5)
+            "Sayur" -> weight*(0.6/12.0)
+            "Buah" -> weight*(12.7/66.0)
+            "Daging" -> 0.0
+            "Ikan" -> weight*(0.9/67.5)
+            "Telur" -> weight*(0.1/15.0)
+            "Susu" -> weight*(5.5/15.0)
+            else -> 0.0
+        }
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.CEILING
+
+        val totalWeight = df.format(weight)
+        val totalCarbohidrat = df.format(recipe)
+        weight = totalWeight.toDouble()
+        carbohidrat = totalCarbohidrat.toDouble()
+
+        foodWeight.text = "$totalWeight gram"
+        foodCarbohidrat.text = "$totalCarbohidrat kkal"
     }
 }

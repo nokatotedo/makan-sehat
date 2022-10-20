@@ -52,7 +52,7 @@ class MainActivity: AppCompatActivity() {
                     percent = (total/2).toInt()
                     progressInner.progress = percent
                     progressOuter.progress = percent
-                    carbohidat.text = total.toString() + " kkal"
+                    carbohidat.text = "$total kkal"
 
                     val adapter = FoodAdapter(array)
                     rv.adapter = adapter
