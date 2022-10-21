@@ -6,6 +6,25 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sc_foodMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-10dp"/>
+        <TextView
+            android:id="@+id/tv_foodMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/app_mode"/>
+    </LinearLayout>
     <ProgressBar
         android:id="@+id/pb_foodRecent_inner"
         android:layout_width="250dp"

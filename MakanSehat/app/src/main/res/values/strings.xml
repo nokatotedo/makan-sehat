@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Makan Sehat</string>
     <string name="app_save">Simpan</string>
+    <string name="app_mode">Mode</string>
     <string name="food_recent_text">Jenis Makanan</string>
     <string name="food_recent_carbohidrat">0 kkal</string>
     <string name="food_detail_text">Gizi</string>

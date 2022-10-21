@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.math.BigDecimal
 import java.math.RoundingMode
-import java.text.DecimalFormat
 
 class DetailActivity: AppCompatActivity() {
     private lateinit var ref: DatabaseReference
@@ -173,11 +173,9 @@ class DetailActivity: AppCompatActivity() {
             "Susu" -> weight*(5.5/15.0)
             else -> 0.0
         }
-        val df = DecimalFormat("#.##")
-        df.roundingMode = RoundingMode.CEILING
 
-        val totalWeight = df.format(weight)
-        val totalCarbohidrat = df.format(recipe)
+        val totalWeight = BigDecimal(weight).setScale(2, RoundingMode.HALF_EVEN)
+        val totalCarbohidrat = BigDecimal(recipe).setScale(2, RoundingMode.HALF_EVEN)
         weight = totalWeight.toDouble()
         carbohidrat = totalCarbohidrat.toDouble()
 
