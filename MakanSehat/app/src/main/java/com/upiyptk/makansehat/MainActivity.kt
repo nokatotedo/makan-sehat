@@ -58,7 +58,7 @@ class MainActivity: AppCompatActivity() {
                         array.add(foodValue)
                     }
 
-                    percent = total.toInt()
+                    percent = (total/3).toInt()
                     setPercent()
 
                     val adapter = FoodAdapter(array)
@@ -88,7 +88,7 @@ class MainActivity: AppCompatActivity() {
                 }
                 false -> {
                     mode.text = "Normal"
-                    percent = total.toInt()
+                    percent = (total/3).toInt()
                     setPercent()
                 }
             }

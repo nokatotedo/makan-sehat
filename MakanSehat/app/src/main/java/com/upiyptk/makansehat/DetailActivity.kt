@@ -162,15 +162,15 @@ class DetailActivity: AppCompatActivity() {
 
     private fun total() {
         val recipe: Double = when(title) {
-            "Serealia" -> weight*(20.2/30.0)
-            "Umbi" -> weight*(11.7/19.5)
-            "Kacang" -> weight*(2.0/27.5)
-            "Sayur" -> weight*(0.6/12.0)
-            "Buah" -> weight*(12.7/66.0)
-            "Daging" -> 0.0
-            "Ikan" -> weight*(0.9/67.5)
-            "Telur" -> weight*(0.1/15.0)
-            "Susu" -> weight*(5.5/15.0)
+            "Serealia" -> weight*0.70
+            "Umbi" -> weight*0.26
+            "Kacang" -> weight*0.09
+            "Sayur" -> weight*0.06
+            "Buah" -> weight*0.21
+            "Daging" -> weight*0.02
+            "Ikan" -> 0.00
+            "Telur" -> 0.00
+            "Susu" -> weight*0.13
             else -> 0.0
         }
 
